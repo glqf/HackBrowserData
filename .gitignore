@@ -178,10 +178,19 @@ config.toml
 Bookmarks
 Login Data
 Cookies
-hack-browser-data
 History
 *.db
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
 
+#Chromium*
+#Firefox*
+result/
+results/
+
+hack-browser-data
+!/cmd/hack-browser-data
+!/browsingdata/history
+!/browsingdata/history/history.go
+!/browsingdata/history/history_test.go

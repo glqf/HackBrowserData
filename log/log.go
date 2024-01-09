@@ -1,99 +1,119 @@
 package log
 
 import (
-	"fmt"
-	"io"
-	"log"
 	"os"
+
+	"github.com/gookit/slog"
 )
 
-type Level int
+var std = &slog.SugaredLogger{}
 
-const (
-	LevelDebug Level = iota
-	LevelWarn
-	LevelError
-)
+func init() {
+	std = newStdLogger(slog.NoticeLevel)
+}
 
-func (l Level) String() string {
-	switch l {
-	case LevelDebug:
-		return "debug"
-	case LevelError:
-		return "error"
+// SetVerbose set log level to debug
+func SetVerbose() {
+	std = newStdLogger(slog.DebugLevel)
+}
+
+const template = "[{{level}}] [{{caller}}] {{message}} {{data}} {{extra}}\n"
+
+// newStdLogger is a new std logger
+func newStdLogger(level slog.Level) *slog.SugaredLogger {
+	return slog.NewSugaredLogger(os.Stdout, level).Config(func(sl *slog.SugaredLogger) {
+		sl.SetName("stdLogger")
+		sl.ReportCaller = true
+		sl.CallerSkip = 7
+		// auto enable console color
+		sl.Formatter.(*slog.TextFormatter).EnableColor = false
+		sl.Formatter.(*slog.TextFormatter).SetTemplate(template)
+	})
+}
+
+// Trace logs a message at level Trace
+func Trace(args ...interface{}) {
+	std.Log(slog.TraceLevel, args...)
+}
+
+// Tracef logs a message at level Trace
+func Tracef(format string, args ...interface{}) {
+	std.Logf(slog.TraceLevel, format, args...)
+}
+
+// Info logs a message at level Info
+func Info(args ...interface{}) {
+	std.Log(slog.InfoLevel, args...)
+}
+
+// Infof logs a message at level Info
+func Infof(format string, args ...interface{}) {
+	std.Logf(slog.InfoLevel, format, args...)
+}
+
+// Notice logs a message at level Notice
+func Notice(args ...interface{}) {
+	std.Log(slog.NoticeLevel, args...)
+}
+
+// Noticef logs a message at level Notice
+func Noticef(format string, args ...interface{}) {
+	std.Logf(slog.NoticeLevel, format, args...)
+}
+
+// Warn logs a message at level Warn
+func Warn(args ...interface{}) {
+	std.Log(slog.WarnLevel, args...)
+}
+
+// Warnf logs a message at level Warn
+func Warnf(format string, args ...interface{}) {
+	std.Logf(slog.WarnLevel, format, args...)
+}
+
+// Error logs a message at level Error
+func Error(args ...interface{}) {
+	std.Log(slog.ErrorLevel, args...)
+}
+
+// ErrorT logs a error type at level Error
+func ErrorT(err error) {
+	if err != nil {
+		std.Log(slog.ErrorLevel, err)
 	}
-	return ""
 }
 
-var (
-	formatLogger *Logger
-	levelMap     = map[string]Level{
-		"debug": LevelDebug,
-		"error": LevelError,
-	}
-)
-
-func InitLog(l string) {
-	formatLogger = newLog(os.Stdout).setLevel(levelMap[l]).setFlags(log.Lshortfile)
+// Errorf logs a message at level Error
+func Errorf(format string, args ...interface{}) {
+	std.Logf(slog.ErrorLevel, format, args...)
 }
 
-type Logger struct {
-	level Level
-	l     *log.Logger
+// Debug logs a message at level Debug
+func Debug(args ...interface{}) {
+	std.Log(slog.DebugLevel, args...)
 }
 
-func newLog(w io.Writer) *Logger {
-	return &Logger{
-		l: log.New(w, "", 0),
-	}
+// Debugf logs a message at level Debug
+func Debugf(format string, args ...interface{}) {
+	std.Logf(slog.DebugLevel, format, args...)
 }
 
-func (l *Logger) setFlags(flag int) *Logger {
-	l.l.SetFlags(flag)
-	return l
+// Fatal logs a message at level Fatal
+func Fatal(args ...interface{}) {
+	std.Log(slog.FatalLevel, args...)
 }
 
-func (l *Logger) setLevel(level Level) *Logger {
-	l.level = level
-	return l
+// Fatalf logs a message at level Fatal
+func Fatalf(format string, args ...interface{}) {
+	std.Logf(slog.FatalLevel, format, args...)
 }
 
-func (l *Logger) doLog(level Level, v ...interface{}) bool {
-	if level < l.level {
-		return false
-	}
-	l.l.Output(3, level.String()+" "+fmt.Sprintln(v...))
-	return true
+// Panic logs a message at level Panic
+func Panic(args ...interface{}) {
+	std.Log(slog.PanicLevel, args...)
 }
 
-func (l *Logger) doLogf(level Level, format string, v ...interface{}) bool {
-	if level < l.level {
-		return false
-	}
-	l.l.Output(3, level.String()+" "+fmt.Sprintln(fmt.Sprintf(format, v...)))
-	return true
-}
-
-func Debug(v ...interface{}) {
-	formatLogger.doLog(LevelDebug, v...)
-}
-
-func Warn(v ...interface{}) {
-	formatLogger.doLog(LevelWarn, v...)
-}
-
-func Error(v ...interface{}) {
-	formatLogger.doLog(LevelError, v...)
-}
-
-func Errorf(format string, v ...interface{}) {
-	formatLogger.doLogf(LevelError, format, v...)
-}
-
-func Warnf(format string, v ...interface{}) {
-	formatLogger.doLogf(LevelWarn, format, v...)
-}
-
-func Debugf(format string, v ...interface{}) {
-	formatLogger.doLogf(LevelDebug, format, v...)
+// Panicf logs a message at level Panic
+func Panicf(format string, args ...interface{}) {
+	std.Logf(slog.PanicLevel, format, args...)
 }

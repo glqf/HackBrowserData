@@ -1,77 +1,83 @@
+<div align="center">
+<img src="LOGO.png" alt="hack-browser-data logo" />
+</div> 
+
+
 # HackBrowserData
 
-![CI](https://github.com/moonD4rk/HackBrowserData/workflows/CI/badge.svg?branch=master) ![Build Hack-Browser-Data Release](https://github.com/moonD4rk/HackBrowserData/workflows/Build%20Hack-Browser-Data%20Release/badge.svg)
+[![Lint](https://github.com/moonD4rk/HackBrowserData/actions/workflows/lint.yml/badge.svg)](https://github.com/moonD4rk/HackBrowserData/actions/workflows/lint.yml) [![build](https://github.com/moonD4rk/HackBrowserData/actions/workflows/build.yml/badge.svg)](https://github.com/moonD4rk/HackBrowserData/actions/workflows/build.yml) [![Release](https://github.com/moonD4rk/HackBrowserData/actions/workflows/release.yml/badge.svg)](https://github.com/moonD4rk/HackBrowserData/actions/workflows/release.yml)
 
-[中文说明](https://github.com/moonD4rk/HackBrowserData/blob/master/README_ZH.md) 
+[中文说明](https://github.com/moonD4rk/HackBrowserData/blob/master/README_ZH.md)
 
-`HackBrowserData` is an open-source tool that could help you decrypt data ( password|bookmark|cookie|history|credit card|downloads link ) from the browser. It supports the most popular browsers on the market and runs on Windows, macOS and Linux.
+`HackBrowserData` is a command-line tool for decrypting and exporting browser data (passwords, history, cookies, bookmarks, credit cards, download history, localStorage and extensions) from the browser. It supports the most popular browsers on the market and runs on Windows, macOS and Linux.
 
-> Disclaimer: This tool is limited to security research only, and the user assumes all legal and related responsibilities arising from its use! The author assumes no legal responsibility!
+> Disclaimer: This tool is only intended for security research. Users are responsible for all legal and related liabilities resulting from the use of this tool. The original author does not assume any legal responsibility.
 
 ## Supported Browser
 
 ### Windows
-| Browser                             | Password | Cookie | Bookmark | History |
-| :---------------------------------- | :------: | :----: | :------: | :-----: |
-| Google Chrome |    ✅    |   ✅   |    ✅    |    ✅    |
-| Google Chrome Beta |    ✅    |   ✅   |    ✅    |    ✅    |
-| Chromium |    ✅    |    ✅    |    ✅    |    ✅    |
-| Microsoft Edge |    ✅    |   ✅   |    ✅    |    ✅    |
-| 360 Speed |    ✅    |   ✅   |    ✅    |    ✅    |
-| QQ |    ✅    |   ✅   |    ✅    |    ✅    |
-| Brave |    ✅    |   ✅   |    ✅    |    ✅    |
-| Opera |    ✅    |    ✅    |    ✅    |    ✅    |
-| OperaGX |    ✅    |    ✅    |    ✅    |    ✅    |
-| Vivaldi |    ✅    |    ✅    |    ✅    |    ✅    |
-| Yandex |    ✅    |    ✅    |    ✅    |    ✅    |
-| CocCoc |    ✅    |    ✅    |    ✅    |    ✅    |
-| Firefox |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Beta |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Dev |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox ESR |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Nightly |    ✅    |   ✅   |    ✅    |    ✅    |
-| Internet Explorer |    ❌    |   ❌   |    ❌    |    ❌    |
+| Browser            | Password | Cookie | Bookmark | History |
+|:-------------------|:--------:|:------:|:--------:|:-------:|
+| Google Chrome      |    ✅     |   ✅    |    ✅     |    ✅    |
+| Google Chrome Beta |    ✅     |   ✅    |    ✅     |    ✅    |
+| Chromium           |    ✅     |   ✅    |    ✅     |    ✅    |
+| Microsoft Edge     |    ✅     |   ✅    |    ✅     |    ✅    |
+| 360 Speed          |    ✅     |   ✅    |    ✅     |    ✅    |
+| QQ                 |    ✅     |   ✅    |    ✅     |    ✅    |
+| Brave              |    ✅     |   ✅    |    ✅     |    ✅    |
+| Opera              |    ✅     |   ✅    |    ✅     |    ✅    |
+| OperaGX            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Vivaldi            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Yandex             |    ✅     |   ✅    |    ✅     |    ✅    |
+| CocCoc             |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Beta       |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Dev        |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox ESR        |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Nightly    |    ✅     |   ✅    |    ✅     |    ✅    |
+| Internet Explorer  |    ❌     |   ❌    |    ❌     |    ❌    |
 
 
 ### MacOS
 
 Based on Apple's security policy, some browsers **require a current user password** to decrypt.
 
-| Browser                             | Password | Cookie | Bookmark | History |
-| :------- | :------: | :----: | :------: | :-----: |
-| Google Chrome |    ✅    |   ✅   |    ✅    |    ✅    |
-| Google Chrome Beta |    ✅    |   ✅   |    ✅    |    ✅    |
-| Chromium |    ✅    |    ✅    |    ✅    |    ✅    |
-| Microsoft Edge |    ✅    |   ✅   |    ✅    |    ✅    |
-| Brave |    ✅    |   ✅   |    ✅    |    ✅    |
-| Opera |    ✅    |    ✅    |    ✅    |    ✅    |
-| OperaGX |    ✅    |    ✅    |    ✅    |    ✅    |
-| Vivaldi |    ✅    |    ✅    |    ✅    |    ✅    |
-| Yandex |    ✅    |    ✅    |    ✅    |    ✅    |
-| CocCoc |    ✅    |    ✅    |    ✅    |    ✅    |
-| Firefox |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Beta |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Dev |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox ESR |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Nightly |    ✅    |   ✅   |    ✅    |    ✅    |
-| Safari |    ❌    |   ❌   |    ❌    |    ❌    |
+| Browser            | Password | Cookie | Bookmark | History |
+|:-------------------|:--------:|:------:|:--------:|:-------:|
+| Google Chrome      |    ✅     |   ✅    |    ✅     |    ✅    |
+| Google Chrome Beta |    ✅     |   ✅    |    ✅     |    ✅    |
+| Chromium           |    ✅     |   ✅    |    ✅     |    ✅    |
+| Microsoft Edge     |    ✅     |   ✅    |    ✅     |    ✅    |
+| Brave              |    ✅     |   ✅    |    ✅     |    ✅    |
+| Opera              |    ✅     |   ✅    |    ✅     |    ✅    |
+| OperaGX            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Vivaldi            |    ✅     |   ✅    |    ✅     |    ✅    |
+| CocCoc             |    ✅     |   ✅    |    ✅     |    ✅    |
+| Yandex             |    ✅     |   ✅    |    ✅     |    ✅    |
+| Arc                |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Beta       |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Dev        |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox ESR        |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Nightly    |    ✅     |   ✅    |    ✅     |    ✅    |
+| Safari             |    ❌     |   ❌    |    ❌     |    ❌    |
 
 ### Linux
 
-| Browser                             | Password | Cookie | Bookmark | History |
-| :---- | :------: | :----: | :------: | :-----: |
-| Google Chrome |    ✅    |   ✅   |    ✅    |    ✅    |
-| Google Chrome Beta |    ✅    |   ✅   |    ✅    |    ✅    |
-| Chromium |    ✅    |    ✅    |    ✅    |    ✅    |
-| Microsoft Edge Dev |    ✅    |   ✅   |    ✅    |    ✅    |
-| Brave |    ✅    |   ✅   |    ✅    |    ✅    |
-| Opera |    ✅    |    ✅    |    ✅    |    ✅    |
-| Vivaldi |    ✅    |    ✅    |    ✅    |    ✅    |
-| Firefox |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Beta |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Dev |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox ESR |    ✅    |   ✅   |    ✅    |    ✅    |
-| Firefox Nightly |    ✅    |   ✅   |    ✅    |    ✅    |
+| Browser            | Password | Cookie | Bookmark | History |
+|:-------------------|:--------:|:------:|:--------:|:-------:|
+| Google Chrome      |    ✅     |   ✅    |    ✅     |    ✅    |
+| Google Chrome Beta |    ✅     |   ✅    |    ✅     |    ✅    |
+| Chromium           |    ✅     |   ✅    |    ✅     |    ✅    |
+| Microsoft Edge Dev |    ✅     |   ✅    |    ✅     |    ✅    |
+| Brave              |    ✅     |   ✅    |    ✅     |    ✅    |
+| Opera              |    ✅     |   ✅    |    ✅     |    ✅    |
+| Vivaldi            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox            |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Beta       |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Dev        |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox ESR        |    ✅     |   ✅    |    ✅     |    ✅    |
+| Firefox Nightly    |    ✅     |   ✅    |    ✅     |    ✅    |
 
 
 ## Getting started
@@ -84,14 +90,14 @@ Installation of `HackBrowserData` is dead-simple, just download [the release for
 
 ### Building from source
 
-support `go 1.14+`
+only support `go 1.18+` with go generics
 
 ```bash
-git clone https://github.com/moonD4rk/HackBrowserData
+$ git clone https://github.com/moonD4rk/HackBrowserData
 
-cd HackBrowserData
+$ cd HackBrowserData/cmd/hack-browser-data
 
-go build
+$ CGO_ENABLED=1 go build
 ```
 
 ### Cross compile
@@ -103,7 +109,7 @@ Need install target OS's `gcc` library, here's an example of use `Mac` building 
 ```shell
 brew install mingw-w64
 
-CGO_ENABLED=1 GOOS=windows GOARCH=amd64 CC="x86_64-w64-mingw32-gcc" go build
+CGO_ENABLED=1 GOOS=windows GOARCH=amd64 CC=x86_64-w64-mingw32-gcc go build
 ```
 
 #### For Linux
@@ -121,79 +127,71 @@ You can double-click to run, or use command line.
 ```
 PS C:\test> .\hack-browser-data.exe -h
 NAME:
-   hack-browser-data - Export passwords/cookies/history/bookmarks from browser
+   hack-browser-data - Export passwords|bookmarks|cookies|history|credit cards|download history|localStorage|extensions from browser
 
 USAGE:
-   [hack-browser-data -b chrome -f json -dir results -cc]
-   Get all data(password/cookie/history/bookmark) from chrome
+   [hack-browser-data -b chrome -f json --dir results --zip]
+   Export all browsing data (passwords/cookies/history/bookmarks) from browser
+   Github Link: https://github.com/moonD4rk/HackBrowserData
 
 VERSION:
-   0.3.7
+   0.4.5
+
 GLOBAL OPTIONS:
-   --verbose, --vv                     verbose (default: false)
-   --compress, --cc                    compress result to zip (default: false)
-   --browser value, -b value           available browsers: all|opera|firefox|chrome|edge (default: "all")
-   --results-dir value, --dir value    export dir (default: "results")
-   --format value, -f value            format, csv|json|console (default: "csv")
-   --profile-dir-path value, -p value  custom profile dir path, get with chrome://version
-   --key-file-path value, -k value     custom key file path
-   --help, -h                          show help (default: false)
-   --version, -v                       print the version (default: false)
+   --verbose, --vv                   verbose (default: false)
+   --compress, --zip                 compress result to zip (default: false)
+   --browser value, -b value         available browsers: all|360|brave|chrome|chrome-beta|chromium|coccoc|dc|edge|firefox|opera|opera-gx|qq|sogou|vivaldi|yandex (default: "all")
+   --results-dir value, --dir value  export dir (default: "results")
+   --format value, -f value          output format: csv|json (default: "csv")
+   --profile-path value, -p value    custom profile dir path, get with chrome://version
+   --full-export, --full             is export full browsing data (default: true)
+   --help, -h                        show help
+   --version, -v                     print the version
 
-PS C:\test>  .\hack-browser-data.exe -b all -f json --dir results -cc
-[x]:  Get 44 cookies, filename is results/microsoft_edge_cookie.json
-[x]:  Get 54 history, filename is results/microsoft_edge_history.json
-[x]:  Get 1 passwords, filename is results/microsoft_edge_password.json
-[x]:  Get 4 bookmarks, filename is results/microsoft_edge_bookmark.json
-[x]:  Get 6 bookmarks, filename is results/360speed_bookmark.json
-[x]:  Get 19 cookies, filename is results/360speed_cookie.json
-[x]:  Get 18 history, filename is results/360speed_history.json
-[x]:  Get 1 passwords, filename is results/360speed_password.json
-[x]:  Get 12 history, filename is results/qq_history.json
-[x]:  Get 1 passwords, filename is results/qq_password.json
-[x]:  Get 12 bookmarks, filename is results/qq_bookmark.json
-[x]:  Get 14 cookies, filename is results/qq_cookie.json
-[x]:  Get 28 bookmarks, filename is results/firefox_bookmark.json
-[x]:  Get 10 cookies, filename is results/firefox_cookie.json
-[x]:  Get 33 history, filename is results/firefox_history.json
-[x]:  Get 1 passwords, filename is results/firefox_password.json
-[x]:  Get 1 passwords, filename is results/chrome_password.json
-[x]:  Get 4 bookmarks, filename is results/chrome_bookmark.json
-[x]:  Get 6 cookies, filename is results/chrome_cookie.json
-[x]:  Get 6 history, filename is results/chrome_history.json
-[x]:  Compress success, zip filename is results/archive.zip
-```
-### Run with custom browser profile path
+
+PS C:\test> .\hack-browser-data.exe -b all -f json --dir results --zip
+[NOTICE] [browser.go:46,pickChromium] find browser Chrome success  
+[NOTICE] [browser.go:46,pickChromium] find browser Microsoft Edge success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/microsoft_edge_download.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/microsoft_edge_password.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/microsoft_edge_creditcard.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/microsoft_edge_bookmark.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/microsoft_edge_cookie.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/microsoft_edge_history.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_history.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_download.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_password.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_creditcard.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_bookmark.json success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_cookie.json success  
 
 ```
-PS C:\Users\User\Desktop> .\hack-browser-data.exe -b edge -p 'C:\Users\User\AppData\Local\Microsoft\Edge\User Data\Default' -k 'C:\Users\User\AppData\Local\Microsoft\Edge\User Data\Local State'
+### Run with custom browser profile folder
 
-[x]:  Get 29 history, filename is results/microsoft_edge_history.csv
-[x]:  Get 0 passwords, filename is results/microsoft_edge_password.csv
-[x]:  Get 1 credit cards, filename is results/microsoft_edge_credit.csv
-[x]:  Get 4 bookmarks, filename is results/microsoft_edge_bookmark.csv
-[x]:  Get 54 cookies, filename is results/microsoft_edge_cookie.csv
+If you want to export data from a custom browser profile folder, you can use the `-p` parameter to specify the path of the browser profile folder. PS: use double quotes to wrap the path.
+```
+PS C:\Users\User\Desktop> .\hack-browser-data.exe -b chrome -p "C:\Users\User\AppData\Local\Microsoft\Edge\User Data\Default"
 
-
-PS C:\Users\User\Desktop> .\hack-browser-data.exe -b edge -p 'C:\Users\User\AppData\Local\Microsoft\Edge\User Data\Default'
-
-[x]:  Get 1 credit cards, filename is results/microsoft_edge_credit.csv
-[x]:  Get 4 bookmarks, filename is results/microsoft_edge_bookmark.csv
-[x]:  Get 54 cookies, filename is results/microsoft_edge_cookie.csv
-[x]:  Get 29 history, filename is results/microsoft_edge_history.csv
-[x]:  Get 0 passwords, filename is results/microsoft_edge_password.csv
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_creditcard.csv success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_bookmark.csv success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_cookie.csv success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_history.csv success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_download.csv success  
+[NOTICE] [browsingdata.go:59,Output] output to file results/chrome_password.csv success  
 ```
 
 ### Some other projects based on HackBrowserData
 [Sharp-HackBrowserData](https://github.com/S3cur3Th1sSh1t/Sharp-HackBrowserData)
 
 [Reflective-HackBrowserData](https://github.com/idiotc4t/Reflective-HackBrowserData)
-...
 
 
 ## Contributors
 
 ![](/CONTRIBUTORS.svg)
+
+## Stargazers over time
+[![Star History Chart](https://api.star-history.com/svg?repos=moond4rk/hackbrowserdata&type=Date)](https://github.com/moond4rk/HackBrowserData)
 
 
 ## 404StarLink 2.0 - Galaxy
